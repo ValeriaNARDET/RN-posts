@@ -12,15 +12,18 @@ To clone and set the project:
 git clone <repository-url>
 cd <project-folder>
 npm install
+```
 
 To start the progect
 
 ```bash
 npx expo start
+```
 
 or 
 
 ```bash
 npx expo start -c
+```
 
 and then press 'a' (for android emulator) or press 'i' (for iOS) 
