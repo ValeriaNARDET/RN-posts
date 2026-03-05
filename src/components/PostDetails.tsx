@@ -4,11 +4,13 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectPosts } from "@store/posts/postsSlice";
 import { Post } from "../types/post";
+import StyledButton from "@components/base/StyledButton";
+import { COLORS, SIZE } from "@shared/tokens";
 
 
 export const PostDetails: React.FC = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const post = useSelector(selectPosts).find((p:Post) => p.id === Number(id));
+  const post = useSelector(selectPosts).find((p: Post) => p.id === Number(id));
 
   if (!post) {
     return <Text>Post not found</Text>;
@@ -26,36 +28,21 @@ export const PostDetails: React.FC = () => {
 
       <Text style={styles.content}>{post.body}</Text>
 
-      <Pressable style={styles.button} onPress={() => handlePress()}>
-        <Text style={styles.buttonText}>Edit Post</Text>
-      </Pressable>
+      <StyledButton label="Edit Post" size="small" onPress={() => handlePress()} />
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  header: { 
+  header: {
     marginVertical: 18,
-    fontSize: 28, 
+    fontSize: SIZE.fz28,
     fontWeight: "bold",
-    color: '#3e1158'
+    color: COLORS.primaryDark
   },
   content: {
-    fontSize: 16,
+    fontSize: SIZE.fz16,
     fontWeight: "bold",
-    color: '#3e1158'
-  },
-  button: {
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 18,
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    borderRadius: 4,
-    elevation: 3,
-    backgroundColor: "#faf3ff",
-  },
-  buttonText: {
-    color: '#3e1158',
+    color: COLORS.primaryDark,
   },
 });

@@ -1,4 +1,5 @@
 import { PostForm } from "@components/PostForm";
+import { COLORS, INDENT, SIZE } from "@shared/tokens";
 import { StyleSheet, View, Text } from "react-native";
 
 const CreatePostForm = () => {
@@ -12,14 +13,14 @@ const CreatePostForm = () => {
 
 const styles = StyleSheet.create({
     container: {
-      paddingVertical: 46,
-      paddingHorizontal: 28,
+      paddingVertical: INDENT.p46,
+      paddingHorizontal: INDENT.p24,
     },
     header: { 
       marginVertical: 18,
-      fontSize: 28, 
+      fontSize: SIZE.fz28, 
       fontWeight: "bold",
-      color: '#3e1158'
+      color: COLORS.primaryDark,
     },
 });
 

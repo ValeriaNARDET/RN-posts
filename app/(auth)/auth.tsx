@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useRouter } from "expo-router";
 import { useDispatch } from "react-redux";
 import { login } from "@store/auth/authSlice";
+import StyledButton from "@components/base/StyledButton";
+import { COLORS, INDENT, RADIUS, SIZE } from "@shared/tokens";
 
 const Auth = () => {
   const [userEmail, setUserEmail] = useState("");
@@ -38,9 +40,7 @@ const Auth = () => {
             style={styles.input}
             onChangeText={setUserPassword}
             />
-          <Pressable style={styles.button} onPress={handleAuth}>
-            <Text  style={styles.buttonText}>Send</Text>
-          </Pressable>
+          <StyledButton label="Send" size="large"  onPress={handleAuth} />
       </View>
     </View>
   );
@@ -51,48 +51,34 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 16,
-    backgroundColor: '#ce79ff',
+    backgroundColor: COLORS.accent,
   },
   group: {
     width: '90%',
     maxWidth: 400,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 24,
-    borderRadius: 16,
-    borderColor: '#3e1158',
+    paddingHorizontal: INDENT.p16,
+    paddingVertical: INDENT.p24,
+    borderRadius: RADIUS.r16,
     borderWidth: 2,
-    backgroundColor: '#faf3ff',
+    borderColor: COLORS.primaryDark,
+    backgroundColor: COLORS.primaryLight,
   },
   header: { 
     marginVertical: 12,
-    fontSize: 28, 
+    fontSize: SIZE.fz28, 
     fontWeight: "bold" 
   },
   input: {
     width: '100%',
     borderWidth: 1,
-    paddingHorizontal: 18,
-    paddingVertical: 12,
-    marginVertical: 8,
-    borderRadius: 6,
-    fontSize: 18,
-    backgroundColor: '#fff',
-  },
-  button: {
-    width: '100%',
-    alignItems: 'center',
-    marginVertical: 18,
-    paddingVertical: 14,
-    borderRadius: 6,
-    backgroundColor: '#3e1158',
-  },
-  buttonText: {
-    color: '#ffffff',
-    fontSize: 22,
-    fontWeight: 'bold',
+    paddingHorizontal: INDENT.p16,
+    paddingVertical: INDENT.p12,
+    marginVertical: INDENT.p8,
+    borderRadius: RADIUS.r6,
+    fontSize: SIZE.fz18,
+    backgroundColor: COLORS.white,
   },
 });
 

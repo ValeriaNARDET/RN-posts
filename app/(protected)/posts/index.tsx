@@ -2,6 +2,8 @@ import React from "react";
 import { View, StyleSheet, Pressable, Text, ScrollView } from "react-native";
 import { useRouter } from "expo-router";
 import { PostList } from "@components/PostList";
+import StyledButton from "@components/base/StyledButton";
+import { COLORS, INDENT, SIZE } from "@shared/tokens";
 
 const Posts = () => {
   const router = useRouter();
@@ -13,10 +15,7 @@ const Posts = () => {
       <View style={styles.posts}>
         <PostList />
       </View>
-
-      <Pressable style={styles.button} onPress={( ) => router.push('/posts/create')}>
-        <Text style={styles.buttonText}>Create New Post</Text>
-      </Pressable>
+      <StyledButton label="Create New Post" size="large"  onPress={() => router.push('/posts/create')} />
     </View>
   );
 };
@@ -25,30 +24,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "space-between",
-    padding: 16,
+    paddingVertical: INDENT.p46,
+    paddingHorizontal: INDENT.p24,
   },
   header: { 
-    marginTop: 34,
-    marginBottom: 18,
-    fontSize: 38, 
+    marginVertical: 18,
+    fontSize: SIZE.fz40, 
     fontWeight: "bold",
-    color: '#3e1158'
+    color: COLORS.primaryDark,
   },
   posts: {
     flex: 1
-  },
-  button: {
-    width: '100%',
-    alignItems: 'center',
-    marginVertical: 30,
-    paddingVertical: 14,
-    borderRadius: 6,
-    backgroundColor: '#3e1158',
-  },
-  buttonText: {
-    color: '#ffffff',
-    fontSize: 22,
-    fontWeight: 'bold',
   },
 });
 

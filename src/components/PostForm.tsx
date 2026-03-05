@@ -5,6 +5,8 @@ import { AppDispatch } from "@store/store";
 import { addPost } from "@store/posts/postsSlice";
 import { NewPost } from "../types/post";
 import { router } from "expo-router";
+import StyledButton from "@components/base/StyledButton";
+import { COLORS, INDENT, RADIUS, SIZE } from "@shared/tokens";
 
 
 export const PostForm: React.FC = () => {
@@ -47,9 +49,7 @@ export const PostForm: React.FC = () => {
                 style={styles.input}
                 onChangeText={setBody}
             />
-            <Pressable style={[styles.button, disabled && styles.disabled]} disabled={disabled} onPress={() => addNewPost()}>
-                <Text style={styles.buttonText}>Save</Text>
-            </Pressable>
+            <StyledButton label="Save" size="large" disabled={disabled} onPress={() => addNewPost()}/>
         </View>
     )
 }
@@ -58,27 +58,11 @@ const styles = StyleSheet.create({
     input: {
         width: '100%',
         borderWidth: 1,
-        paddingHorizontal: 18,
-        paddingVertical: 12,
-        marginVertical: 8,
-        borderRadius: 6,
-        fontSize: 18,
-        backgroundColor: '#fff',
+        paddingHorizontal: INDENT.p16,
+        paddingVertical: INDENT.p12,
+        marginVertical: INDENT.p8,
+        borderRadius: RADIUS.r6,
+        fontSize: SIZE.fz18,
+        backgroundColor: COLORS.white,
     },
-    button: {
-        width: '100%',
-        alignItems: 'center',
-        marginVertical: 20,
-        paddingVertical: 14,
-        borderRadius: 6,
-        backgroundColor: '#3e1158',
-    },
-    buttonText: {
-        color: '#ffffff',
-        fontSize: 22,
-        fontWeight: 'bold',
-    },
-    disabled: {
-        opacity: 0.5
-    }
 });

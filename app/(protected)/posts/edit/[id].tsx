@@ -2,6 +2,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import React from "react";
 import { PostEditForm } from "@components/PostEditForm";
+import { COLORS, INDENT, SIZE } from "@shared/tokens";
 
 const PostEditPage: React.FC = () => {
     const { id } = useLocalSearchParams<{ id: string }>();
@@ -15,14 +16,14 @@ const PostEditPage: React.FC = () => {
 }
 const styles = StyleSheet.create({
     container: {
-      paddingVertical: 46,
-      paddingHorizontal: 28,
+      paddingVertical: INDENT.p46,
+      paddingHorizontal: INDENT.p24,
     },
     header: { 
       marginVertical: 18,
-      fontSize: 28, 
+      fontSize: SIZE.fz28, 
       fontWeight: "bold",
-      color: '#3e1158'
+      color: COLORS.primaryDark
     },
 });
 

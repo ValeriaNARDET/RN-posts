@@ -8,6 +8,8 @@ import { updatePost } from "@store/posts/postsSlice";
 import { Post } from "../types/post";
 import { router } from "expo-router";
 import { editPost } from "@api/posts";
+import StyledButton from "@components/base/StyledButton";
+import { COLORS, INDENT, RADIUS, SIZE } from "@shared/tokens";
 
 
 type PostEditFormProps = {
@@ -50,9 +52,7 @@ export const PostEditForm: React.FC<PostEditFormProps> = ({id}) => {
                 style={styles.input}
                 onChangeText={setBody}
             />
-            <Pressable style={[styles.button, disabled && styles.disabled]} disabled={disabled} onPress={() => handlePress()}>
-                <Text style={styles.buttonText}>Save</Text>
-            </Pressable>
+            <StyledButton label="Save" size="large"  disabled={disabled} onPress={() => handlePress()} />
         </View>
     )
 }
@@ -61,27 +61,11 @@ const styles = StyleSheet.create({
     input: {
         width: '100%',
         borderWidth: 1,
-        paddingHorizontal: 18,
-        paddingVertical: 12,
-        marginVertical: 8,
-        borderRadius: 6,
-        fontSize: 18,
-        backgroundColor: '#fff',
-    },
-    button: {
-        width: '100%',
-        alignItems: 'center',
-        marginVertical: 20,
-        paddingVertical: 14,
-        borderRadius: 6,
-        backgroundColor: '#3e1158',
-    },
-    buttonText: {
-        color: '#ffffff',
-        fontSize: 22,
-        fontWeight: 'bold',
-    },
-    disabled: {
-        opacity: 0.5
+        paddingHorizontal: INDENT.p16,
+        paddingVertical: INDENT.p12,
+        marginVertical: INDENT.p8,
+        borderRadius: RADIUS.r6,
+        fontSize: SIZE.fz18,
+        backgroundColor: COLORS.white,
     }
 });

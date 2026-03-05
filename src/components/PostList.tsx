@@ -5,6 +5,8 @@ import { selectPosts } from "@store/posts/postsSlice";
 import { AppDispatch } from "@store/store";
 import { fetchPosts } from "@store/posts/postsSlice";
 import { useRouter } from "expo-router";
+import StyledButton from "@components/base/StyledButton";
+import { COLORS, INDENT, RADIUS, SIZE } from "@shared/tokens";
 
 
 export const PostList: React.FC = () => {
@@ -31,9 +33,7 @@ export const PostList: React.FC = () => {
           <View style={styles.card}>
             <Text style={styles.title}>{item.title}</Text>
             <Text style={styles.body}>{item.body.substring(0, 35)} ...</Text>
-            <Pressable style={styles.button} onPress={() => getPostdetails(Number(item.id))}>
-              <Text style={styles.buttonText}>Show Details</Text>
-            </Pressable>
+            <StyledButton label="Show Details" size="small" onPress={() => getPostdetails(Number(item.id))} />
           </View>
         )}
       />}
@@ -43,29 +43,17 @@ export const PostList: React.FC = () => {
 
 const styles = StyleSheet.create({
   card: {
-    paddingVertical: 6,
-    borderRadius: 8,
+    paddingVertical: INDENT.p8,
+    borderRadius: RADIUS.r6,
   },
   title: {
-    fontSize: 20,
+    fontSize: SIZE.fz20,
     fontWeight: "bold",
-    color: '#3e1158'
+    color: COLORS.primaryDark,
   },
   body: {
-    paddingVertical: 8,
-    fontSize: 14,
-    color: '#3e1158'
-  },
-  button: {
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    borderRadius: 4,
-    elevation: 3,
-    backgroundColor: "#faf3ff",
-  },
-  buttonText: {
-    color: '#3e1158',
+    paddingVertical: INDENT.p8,
+    fontSize: SIZE.fz16,
+    color: COLORS.primaryDark,
   },
 });
